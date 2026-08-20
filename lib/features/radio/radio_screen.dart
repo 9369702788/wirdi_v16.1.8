@@ -282,7 +282,7 @@ class _SourceBadge extends StatelessWidget {
       );
     }
     final isVerified = svc.activeSource == RadioSource.dataRosy ||
-        svc.activeSource == RadioSource.islamicApp;
+        svc.activeSource == RadioSource.uthumany;
     final color = isVerified ? Colors.green.shade700 : Colors.orange.shade700;
     final icon = isVerified ? Icons.verified_rounded : Icons.offline_bolt_outlined;
     return Container(
