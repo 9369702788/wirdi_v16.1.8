@@ -127,7 +127,7 @@ class RadioService extends ChangeNotifier {
       debugPrint('[Radio] Refreshed ' + stations.length.toString() + ' stations from data-rosy');
       return true;
     } catch (e) {
-      debugPrint('${m.group(1)}$e');
+      debugPrint('[Radio] data-rosy error: ' + e.toString());
       return false;
     }
   }
@@ -152,7 +152,7 @@ class RadioService extends ChangeNotifier {
       debugPrint('[Radio] Refreshed ' + stations.length.toString() + ' stations from uthumany');
       return true;
     } catch (e) {
-      debugPrint('${m.group(1)}$e');
+      debugPrint('[Radio] uthumany error: ' + e.toString());
       return false;
     }
   }
@@ -169,7 +169,7 @@ class RadioService extends ChangeNotifier {
       await _player.setReleaseMode(ReleaseMode.stop);
       await _player.play(UrlSource(station.streamUrl));
     } catch (e) {
-      debugPrint('${m.group(1)}$e');
+      debugPrint('[Radio] play error: ' + e.toString());
       _state = RadioState.error;
       _errorMessage = 'Could not connect. Check your internet connection.';
       notifyListeners();
@@ -178,7 +178,7 @@ class RadioService extends ChangeNotifier {
 
   Future<void> stop() async {
     try { await _player.stop(); } catch (e) {
-      debugPrint('${m.group(1)}$e');
+      debugPrint('[Radio] play error: ' + e.toString());
     }
     _state = RadioState.stopped;
     _currentStation = null;
